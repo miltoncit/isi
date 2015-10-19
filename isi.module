@@ -1,0 +1,46 @@
+<?php
+/**
+ * @file
+ * Implements hook_menu().
+ */
+function isi_menu() {
+  $items = array();
+  
+  $items['admin/config/isi'] = array(
+    'title' => 'ISI Configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('isi_form'),
+    'access arguments' => array('administer isi'),
+    'file' => 'isi.admin.inc',
+    'file path' => drupal_get_path('module', 'isi') . '/inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function isi_permission() {
+  return array(
+    'administer isi' => array(
+      'title' => t('ISI Administrator'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme
+ */
+function isi_theme($existing, $type, $theme, $path) {
+  if($type == 'module') {
+    $path = drupal_get_path('module', 'isi') . '/templates';
+    return array(
+      'rbv_product_reviews' => array(
+          'template' => 'reviews',
+          'path' => $path
+      ),
+    );
+  }
+  return array();
+}

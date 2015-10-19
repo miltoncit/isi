@@ -1,0 +1,16 @@
+name = ISI 1.0
+description = "Important Safety Information to Website"
+package = Others
+core = 7.x
+configure = admin/config/isi
+dependencies[] = ckeditor
+
+; ========================================
+; Scripts
+; ========================================
+scripts[] = js/isi.js
+
+; ========================================
+; CSS
+; ========================================
+stylesheets[all][] = css/isi.css
